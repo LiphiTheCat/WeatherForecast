@@ -7,10 +7,9 @@ namespace WeatherForecast.Models
 {
     public class TemperatureInfo
     {
-       public float CurentTemp { get; set; }
-       public bool IsCelsius { get;set; }
-       public float MaxTemp { get; set; }
-       public float MinTemp { get; set; }
+       public float Temp { get; set; }
+       public float Temp_max { get; set; }
+       public float Temp_min { get; set; }
 
     }
 }

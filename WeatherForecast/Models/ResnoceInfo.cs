@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Models
 {
-    public class ResnoceInfo
+    public class ResponceInfo
     {
-        public ResnoceInfo(TemperatureInfo tempInfo, string city)
+        public ResponceInfo(TemperatureInfo main, string city)
         {
-            this.TempInfo = tempInfo;
-            this.City = city;
+            this.Main = main;
+            this.Name = city;
         }
-
-        public TemperatureInfo TempInfo { get; set; }
-        public string City { get; set; }
+        public ResponceInfo() { }
+        public TemperatureInfo Main { get; set; }
+        public string Name { get; set; }
 
     }
 }

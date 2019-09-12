@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
-using WeatherForecast.AppCode.Location;
 using WeatherForecast.Models;
 using System.Net;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace WeatherForecast.Controllers
 {
@@ -15,11 +15,9 @@ namespace WeatherForecast.Controllers
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration _config;
-        private readonly IAppCodeLocation _appLocation;
 
         public HomeController(IHttpContextAccessor httpContextAccessor, IConfiguration config)
         {
-            this._appLocation = new AppCodeLocation();
             this._httpContextAccessor = httpContextAccessor;
             this._config = config;
             
@@ -33,15 +31,14 @@ namespace WeatherForecast.Controllers
 
             HttpWebResponse webResponse = (HttpWebResponse)web.GetResponse();
 
-            
-
             string response;
 
             using (StreamReader streamReader = new StreamReader(webResponse.GetResponseStream()))
             {
                 response = streamReader.ReadToEnd();
-                js
             }
+            ResponceInfo responceInfo = JsonConvert.DeserializeObject<ResponceInfo>(response);
+            ViewBag.responceInfo = responceInfo;
             return View();
         }
 
