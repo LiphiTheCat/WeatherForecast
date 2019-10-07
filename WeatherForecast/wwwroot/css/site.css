@@ -1,6 +1,11 @@
-﻿.minTemp {
+﻿.row {
+    margin-top: 100px;
+}
+
+.minTemp {
     color: dodgerblue;
 }
-.maxTemp{
+
+.maxTemp {
     color: orangered;
 }

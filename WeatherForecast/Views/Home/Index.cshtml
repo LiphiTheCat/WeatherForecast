@@ -3,9 +3,16 @@
 }
 
 <div class="row">
+    <form action="/Home/Index" method="get">
+        <select id="CityName" name="CityName">
+            <option value="Moscow">Moscow</option>
+            <option value="London">London</option>
+            <option value="Paris">Paris</option>
+        </select>
+        <input type="submit"/>
+    </form>
     <p>City: <span>@ViewBag.responceInfo.Name</span></p>
     <p>Curent Temp: <span>@ViewBag.responceInfo.Main.Temp</span></p>
     <p>Min Temp Today: <span class="minTemp">@ViewBag.responceInfo.Main.Temp_min</span></p>
     <p>Max Temp Today: <span class="maxTemp">@ViewBag.responceInfo.Main.Temp_max</span></p>
 </div>
-

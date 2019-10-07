@@ -7,10 +7,10 @@ namespace WeatherForecast.Models
 {
     public class ResponceInfo
     {
-        public ResponceInfo(TemperatureInfo main, string city)
+        public ResponceInfo(TemperatureInfo main, string name)
         {
             this.Main = main;
-            this.Name = city;
+            this.Name = name;
         }
         public ResponceInfo() { }
         public TemperatureInfo Main { get; set; }

@@ -20,34 +20,37 @@ namespace WeatherForecast.Controllers
         {
             this._httpContextAccessor = httpContextAccessor;
             this._config = config;
-            
-        }
 
-        public IActionResult Index()
+        }
+        [HttpGet]
+        public IActionResult Index(string CityName)
         {
-            string url = "https://api.openweathermap.org/data/2.5/weather?q=Moscow,ru&units=metric&appid=0cb7dbe4262ea27ff9c4b58570ed6fae";
+            if (CityName == null) CityName = "Moscow";
+
+            string url = "https://api.openweathermap.org/data/2.5/weather?q=" + CityName + "&units=metric&appid=0cb7dbe4262ea27ff9c4b58570ed6fae";
 
             HttpWebRequest web = (HttpWebRequest)WebRequest.Create(url);
 
-            HttpWebResponse webResponse = (HttpWebResponse)web.GetResponse();
-
             string response;
 
-            using (StreamReader streamReader = new StreamReader(webResponse.GetResponseStream()))
+            using (HttpWebResponse webResponse = (HttpWebResponse)web.GetResponse())
             {
-                response = streamReader.ReadToEnd();
+
+                using (StreamReader streamReader = new StreamReader(webResponse.GetResponseStream()))
+                {
+                    response = streamReader.ReadToEnd();
+                }
             }
             ResponceInfo responceInfo = JsonConvert.DeserializeObject<ResponceInfo>(response);
             ViewBag.responceInfo = responceInfo;
             return View();
         }
+        
+        public IActionResult Admin()
+        {
 
-        //public IActionResult About()
-        //{
-        //    ViewData["Message"] = "Your application description page.";
-
-        //    return View();
-        //}
+            return View();
+        }
 
         //public IActionResult Contact()
         //{
