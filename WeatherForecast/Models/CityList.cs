@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Models
 {
-    public class CityList
+    static public class CityList
     {
-        public List<City> City { get; set; }
+        static public List<City> City { get; set; }
     }
 }

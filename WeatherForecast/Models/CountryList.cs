@@ -6,8 +6,8 @@ using WeatherForecast.AppCode;
 
 namespace WeatherForecast.Models
 {
-    public class CountryList
+    static public class CountryList
     {
-        public List<Country> Countries { get; set; }
+        static public List<Country> Countries { get; set; }
     }
 }

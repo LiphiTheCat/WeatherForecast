@@ -8,6 +8,8 @@ using WeatherForecast.Models;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
+using WeatherForecast.AppCode;
+using System.Collections;
 
 namespace WeatherForecast.Controllers
 {
@@ -46,18 +48,32 @@ namespace WeatherForecast.Controllers
             return View();
         }
         
-        public IActionResult Admin()
+       
+        [HttpGet]
+        public JsonResult GetCountry(string country)
         {
-
-            return View();
+            if (country != "All")
+            {
+                return Json(CountryList.Countries.Find(x => x.ShortName == country));
+            }
+            else
+            {
+                 return Json(CountryList.Countries);
+            }
         }
 
-        //public IActionResult Contact()
-        //{
-        //    ViewData["Message"] = "Your contact page.";
-
-        //    return View();
-        //}
+        [HttpGet]
+        public JsonResult GetCapitals(string country)
+        {
+            if (country != "All")
+            {
+                return Json(CountryList.Countries.Find(x => x.ShortName == country));
+            }
+            else
+            {
+                return Json(CountryList.Countries);
+            }
+        }
 
         //public IActionResult Privacy()
         //{

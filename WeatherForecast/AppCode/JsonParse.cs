@@ -10,15 +10,16 @@ using Newtonsoft.Json;
 namespace WeatherForecast.AppCode
 {
      public class JsonParse
-    {
-        public JsonParse(string jsonCountries, string jsonCities)
+     {
+        public JsonParse(string jsonCountries, string jsonCities, string jsonCapitals)
         {
             this._jsonCountries = jsonCountries;
             this._jsonCities = jsonCities;
+            this._jsonCapitals = jsonCapitals;
         }
-
         readonly string _jsonCountries;
         readonly string _jsonCities;
+        readonly string _jsonCapitals;
         public List<Country> GetCountries(List<City> cities)
         {
             bool isCountryFound = false;
@@ -56,6 +57,38 @@ namespace WeatherForecast.AppCode
             {
                 ShortName = shortName,
                 FullName = fullName
+            };
+        }
+        public List<Capital> GetCapitals(List<Country> countries, List<City> citys)
+        {
+            List<Capital> capitals = new List<Capital>();
+            foreach (Country country in countries)
+            {
+                capitals.Add(CreateCapital(country, citys));
+            }
+            return new List<Capital>();
+        }
+        private Capital CreateCapital(Country country, List<City> citys)
+        {
+            string capitalName;
+            JObject jsonCapitals = JObject.Parse(_jsonCapitals);
+            capitalName = jsonCapitals.SelectToken(country.ShortName).ToString();
+            City capital = new City();
+            foreach (City city in citys)
+            {
+                if (city.Name == capitalName)
+                {
+                    capital = city;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            return new Capital()
+            {
+                City = capital,
+                Country = country
             };
         }
     }
