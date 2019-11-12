@@ -10,6 +10,7 @@ using System.IO;
 using Newtonsoft.Json;
 using WeatherForecast.AppCode;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace WeatherForecast.Controllers
 {
@@ -25,11 +26,11 @@ namespace WeatherForecast.Controllers
 
         }
         [HttpGet]
-        public IActionResult Index(string CityName)
+        public IActionResult Index(string CityName, string Units)
         {
             if (CityName == null) CityName = "Moscow";
 
-            string url = "https://api.openweathermap.org/data/2.5/weather?q=" + CityName + "&units=metric&appid=0cb7dbe4262ea27ff9c4b58570ed6fae";
+            string url = "https://api.openweathermap.org/data/2.5/weather?q=" + CityName + "&units=" + Units + "&appid=0cb7dbe4262ea27ff9c4b58570ed6fae";
 
             HttpWebRequest web = (HttpWebRequest)WebRequest.Create(url);
 
@@ -50,29 +51,21 @@ namespace WeatherForecast.Controllers
         
        
         [HttpGet]
-        public JsonResult GetCountry(string country)
+        public JsonResult GetCountries()
         {
-            if (country != "All")
+            List<string> countries = new List<string>();
+            foreach (Country country in CountryList.Countries)
             {
-                return Json(CountryList.Countries.Find(x => x.ShortName == country));
+                countries.Add(country.FullName);
             }
-            else
-            {
-                 return Json(CountryList.Countries);
-            }
+            return Json(countries);
         }
 
         [HttpGet]
-        public JsonResult GetCapitals(string country)
+        public JsonResult GetCapital(string country)
         {
-            if (country != "All")
-            {
-                return Json(CountryList.Countries.Find(x => x.ShortName == country));
-            }
-            else
-            {
-                return Json(CountryList.Countries);
-            }
+            return Json(CapitalList.Capitals.Find(x => x.Country.ShortName == country).City.Name);
+
         }
 
         //public IActionResult Privacy()

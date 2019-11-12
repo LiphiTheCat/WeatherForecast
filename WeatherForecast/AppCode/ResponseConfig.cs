@@ -9,7 +9,7 @@ namespace WeatherForecast.AppCode
 {
     static public class ResponseConfig
     {
-        static void Configuration()
+        public static void Configuration()
         {
             string countriesShortUrl = "http://country.io/names.json";
             string capitalsUrl = "http://country.io/capital.json";

@@ -38,7 +38,7 @@ namespace WeatherForecast
 
             services.AddHttpContextAccessor();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            ResponseConfig.Configuration();
             
         }
 

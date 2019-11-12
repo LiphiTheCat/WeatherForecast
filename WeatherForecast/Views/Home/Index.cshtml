@@ -4,12 +4,10 @@
 
 <div class="row">
     <form action="/Home/Index" method="get">
-        <select id="CityName" name="CityName">
-            <option value="Moscow">Moscow</option>
-            <option value="London">London</option>
-            <option value="Paris">Paris</option>
+        <select id="countries" name="CityName">
+
         </select>
-        <input type="submit"/>
+        <input type="button" onclick="GetCountries()" />
     </form>
     <p>City: <span>@ViewBag.responceInfo.Name</span></p>
     <p>Curent Temp: <span>@ViewBag.responceInfo.Main.Temp</span></p>

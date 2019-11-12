@@ -66,7 +66,7 @@ namespace WeatherForecast.AppCode
             {
                 capitals.Add(CreateCapital(country, citys));
             }
-            return new List<Capital>();
+            return capitals;
         }
         private Capital CreateCapital(Country country, List<City> citys)
         {
@@ -80,10 +80,8 @@ namespace WeatherForecast.AppCode
                 {
                     capital = city;
                 }
-                else
-                {
-                    throw new Exception();
-                }
+                
+
             }
             return new Capital()
             {
