@@ -56,15 +56,32 @@ namespace WeatherForecast.Controllers
             List<string> countries = new List<string>();
             foreach (Country country in CountryList.Countries)
             {
+                
                 countries.Add(country.FullName);
             }
             return Json(countries);
         }
 
         [HttpGet]
+        public JsonResult GetCities(string country)
+        {
+            List<string> GetCountryName(Country country1)
+            {
+                List<string> citiesName = new List<string>();
+                foreach(City c in country1.Cities)
+                {
+                    citiesName.Add(c.Name);
+                }
+                return citiesName;
+            }
+            return Json(GetCountryName(CountryList.Countries.Find(x => x.FullName == country)));
+
+        }
+
+        [HttpGet]
         public JsonResult GetCapital(string country)
         {
-            return Json(CapitalList.Capitals.Find(x => x.Country.ShortName == country).City.Name);
+            return Json(CapitalList.Capitals.Find(x => x.Country.FullName == country).City.Name);
 
         }
 
