@@ -19,33 +19,29 @@ function GetCountries() {
         }
     });
 };
-function GetCapital(Country) {
-    alert("D");
 
-    $.ajax({
-        url: ("https://localhost:5001/Home/GetCapital?country=" + Country),
-        type: "GET",
-        dataType: 'json',
-        success: function (result) {
-            alert(result);
-            return result;
-        }
-    })
-};
-function GetCities(Country, GetCapital) {
-    var capital = GetCapital(Country);
+function GetCities(Country) {
     $.ajax({
         url: ("https://localhost:5001/Home/GetCities?country=" + Country),
         type: "GET",
         dataType: 'json',
         success: function (result) {
             result.forEach(function (item, i, arr) {
-                if (item == capital) {
-                    $("#cities").append($('<option value="' + item + '" selected="selected"' + '">' + item + '</option>'));
-                }
-                else {
-                    $("#cities").append($('<option value="' + item + '">' + item + '</option>'));
-                }
+                $.ajax({
+                    url: ("https://localhost:5001/Home/GetCapital?country=" + Country),
+                    type: "GET",
+                    dataType: 'json',
+                    success: function (result1) {
+                        if (item == result1) {
+                            alert("capital detected!")
+                            $("#cities").append($('<option value="' + item + '" selected="selected"' + '">' + item + '</option>'));
+                        }
+                        else {
+                            $("#cities").append($('<option value="' + item + '">' + item + '</option>'));
+                        }
+                    }
+                })
+
             });
 
         }
