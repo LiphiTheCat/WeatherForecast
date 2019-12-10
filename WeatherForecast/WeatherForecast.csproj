@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Home\Admin.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FreeGeoIPCore" Version="1.0.3" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.App" />

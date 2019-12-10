@@ -2,10 +2,69 @@
     margin-top: 100px;
 }
 
-.minTemp {
+inTemp {
     color: dodgerblue;
 }
 
-.maxTemp {
-    color: orangered;
+body {
+    background: linear-gradient(90deg, #969da3, #bbc2c9);
+    color: white;
+}
+
+.navbar-m {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 20px;
+}
+.navbar-s {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+}
+.navbar-xs {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.Clear {
+    background: linear-gradient(90deg, #428df5, #a3c6ff );
+    background-color: #428df5;
+}
+.Clouds {
+    background: linear-gradient(90deg, #3c72c7, #427ddb );
+    background-color: #3c72c7;
+}
+.Rain {
+    background: linear-gradient(90deg, #414e61, #49586e );
+    background-color: #414e61;
+}
+.Thunderstorm {
+    background: linear-gradient(90deg, #333c4a, #394454 );
+    background-color: #333c4a;
+}
+.Snow {
+    background: linear-gradient(90deg,#9ea2a8, #b1bbc9 );
+    background-color: #9ea2a8;
+}
+.Mist {
+    background: linear-gradient(90deg, #a0a7b0 #bbc2c9);
+    background-color: #a0a7b0;
+}
+.Drizzle {
+    background: linear-gradient(90deg, #414e61, #49586e );
+    background-color: #414e61;
+}
+.wind {
+    text-align: center;
+}
+.main-info {
+    text-align: center;
+}
+#mainForm {
+    text-align:center;
+}
+select {
+    border: 1px solid white;
+    border-radius: 3px;
 }

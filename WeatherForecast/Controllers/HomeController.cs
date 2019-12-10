@@ -44,22 +44,40 @@ namespace WeatherForecast.Controllers
                     response = streamReader.ReadToEnd();
                 }
             }
-            ResponceInfo responceInfo = JsonConvert.DeserializeObject<ResponceInfo>(response);
-            ViewBag.responceInfo = responceInfo;
             return View();
         }
-        
-       
+
         [HttpGet]
         public JsonResult GetCountries()
         {
             List<string> countries = new List<string>();
             foreach (Country country in CountryList.Countries)
             {
-                
+
                 countries.Add(country.FullName);
             }
             return Json(countries);
+        }
+        [HttpGet]
+        public JsonResult GetWeather(string city)
+        {
+            string response;
+            string units = "metric";
+            string responseUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city +"&units=" + units + "&appid=0cb7dbe4262ea27ff9c4b58570ed6fae";
+
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(responseUrl);
+
+            using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
+            {
+
+                using (StreamReader streamReader = new StreamReader(webResponse.GetResponseStream()))
+                {
+                    response = streamReader.ReadToEnd();
+                }
+            }
+            ResponceInfo responceInfo = JsonConvert.DeserializeObject<ResponceInfo>(response);
+            responceInfo.Wind.GetDir();
+            return Json(responceInfo);
         }
 
         [HttpGet]

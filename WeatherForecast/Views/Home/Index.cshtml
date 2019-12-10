@@ -2,18 +2,29 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="row">
-    <form action="/Home/Index" method="get">
-        <select id="countries">
 
-        </select>
-        <select id="cities">
 
-        </select>
-        <input type="button" onclick="GetCountries()" />
-    </form>
-    <p>City: <span>@ViewBag.responceInfo.Name</span></p>
-    <p>Curent Temp: <span>@ViewBag.responceInfo.Main.Temp</span></p>
-    <p>Min Temp Today: <span class="minTemp">@ViewBag.responceInfo.Main.Temp_min</span></p>
-    <p>Max Temp Today: <span class="maxTemp">@ViewBag.responceInfo.Main.Temp_max</span></p>
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 main-info">
+    <p class="navbar-xs">Main</p>
+    <p>Curent Temp: <span id="mainTemp"></span> C°</p>
+    <p>Min Temp Today: <span id="minTemp"></span> C°</p>
+    <p>Max Temp Today: <span id="maxTemp"></span> C°</p>
+    <p>Pressure: <span id="pressure"></span> hPa</p>
+    <p>Humidity: <span id="humidity"></span> %</p>
 </div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wind">
+    <!--     <p><span id="disc"></span></p>     -->
+    <p class="navbar-xs">Wind</p>
+    <p>Wind Speed: <span id="windspeed"></span> m/s</p>
+    <p>Wind Deg: <span id="winddeg"></span> °</p>
+    <p>Wind Dir: <span id="winddir"></span></p>
+
+</div>
+<div id="imgDiv">
+    <img id="weatherIcon" />
+</div>
+<form id="mainForm" action="/Home/Index" method="get">
+    <select id="countries" onchange="countriesListChange()"></select>
+    <select id="cities" onchange="citysListChange()"></select>
+</form>

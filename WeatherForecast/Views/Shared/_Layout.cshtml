@@ -17,24 +17,10 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">WeatherForecast</a>
-            </div>
-            <div class="navbar-collapse collapse">
-            </div>
-        </div>
-    </nav>
 
     <partial name="_CookieConsentPartial" />
-
+    <div class="navbar-m">Weather Forecast </div>
+    <div class="navbar-s"><span id="cityName"></span> (<span id="countryName"></span>)</div>
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -27,9 +27,9 @@ namespace WeatherForecast.AppCode
         }
         static private string Responce(string url)
         {
-            HttpWebRequest Web = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
 
-            using (HttpWebResponse webResponse = (HttpWebResponse)Web.GetResponse())
+            using (HttpWebResponse webResponse = (HttpWebResponse)webRequest.GetResponse())
             {
                 using (StreamReader streamReader = new StreamReader(webResponse.GetResponseStream()))
                 {

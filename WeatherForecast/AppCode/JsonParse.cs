@@ -79,8 +79,7 @@ namespace WeatherForecast.AppCode
                 if (city.Name == capitalName)
                 {
                     capital = city;
-                }
-                
+                }      
 
             }
             return new Capital()
